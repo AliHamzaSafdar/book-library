@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -9,6 +10,7 @@ from .serializers import CategorySerializer, AuthorSerializer, BookSerializer
 # Categories Views
 
 # Get a list of categories or create a new category.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'POST'])
 def category_list(request):
@@ -26,6 +28,7 @@ def category_list(request):
 
 
 # Get, update, or delete a specific category by its ID.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'PUT', 'DELETE'])
 def category_detail(request, pk):
@@ -53,6 +56,7 @@ def category_detail(request, pk):
 # Authors Views
 
 # Get a list of authors or create a new author.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'POST'])
 def author_list(request):
@@ -70,6 +74,7 @@ def author_list(request):
 
 
 # Get, update, or delete a specific author by its ID.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'PUT', 'DELETE'])
 def author_detail(request, pk):
@@ -97,6 +102,7 @@ def author_detail(request, pk):
 # Books Views
 
 # Get a list of books or create a new book.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'POST'])
 def book_list(request):
@@ -114,6 +120,7 @@ def book_list(request):
 
 
 # Get, update, or delete a specific book by its ID.
+@extend_schema(tags=["Store Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET', 'PUT', 'DELETE'])
 def book_detail(request, pk):

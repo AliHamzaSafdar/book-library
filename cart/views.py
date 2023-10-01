@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -11,6 +12,7 @@ from .tasks import send_receipt
 
 
 # View to retrieve the user's cart.
+@extend_schema(tags=["Cart Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['GET'])
 def view_cart(request):
@@ -24,6 +26,7 @@ def view_cart(request):
 
 
 # View to add a book to the user's cart.
+@extend_schema(tags=["Cart Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['POST'])
 def add_to_cart(request, book_id):
@@ -54,6 +57,7 @@ def add_to_cart(request, book_id):
 
 
 # View to remove a cart item from the user's cart.
+@extend_schema(tags=["Cart Model"])
 @permission_classes([IsAuthenticated])
 @api_view(['DELETE'])
 def remove_from_cart(request, cart_item_id):
@@ -74,6 +78,7 @@ def remove_from_cart(request, cart_item_id):
 
 
 # View to process a payment and send an email receipt.
+@extend_schema(tags=["Cart Model"])
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def process_payment(request):

@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -10,6 +11,7 @@ from user.serializers import UserRegistrationSerializer, UserLoginSerializer
 
 
 # User registration view
+@extend_schema(tags=["User Model"])
 @api_view(['POST'])
 def user_registration(request):
     if request.method == 'POST':
@@ -21,6 +23,7 @@ def user_registration(request):
 
 
 # User login view
+@extend_schema(tags=["User Model"])
 @api_view(['POST'])
 def user_login(request):
     if request.method == 'POST':
@@ -44,6 +47,7 @@ def user_login(request):
 
 
 # User logout view
+@extend_schema(tags=["User Model"])
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def user_logout(request):
