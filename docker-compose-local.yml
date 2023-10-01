@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    image: django_app
+    command: >
+      sh -c "python manage.py makemigrations user --noinput &&
+      python manage.py makemigrations bookstore --noinput &&
+      python manage.py makemigrations cart --noinput &&
+      python manage.py migrate &&
+      daphne library.asgi:application -b 0.0.0.0 -p 8000"
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+      - rabbitmq  # Adding a dependency on the RabbitMQ service
+  db:
+    image: postgis/postgis:13-3.1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  # Define RabbitMQ service
+  rabbitmq:
+    image: rabbitmq:3.13.0-beta.6-management-alpine
+    ports:
+      - "5673:5672"  # RabbitMQ default port
+      - "15673:15672"  # RabbitMQ management UI port
+    expose:
+      - "5673"
+    environment:
+        RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+        RABBITMQ_DEFAULT_USER: "guest"
+        RABBITMQ_DEFAULT_PASS: "guest"
+        RABBITMQ_DEFAULT_VHOST: "/" # Use default guest password
+    volumes:
+        - rabbitmq_data:/var/lib/rabbitmq
+
+  celery:
+    build: .
+    command: celery -A library worker --pool=gevent --concurrency=100 --loglevel=info
+    volumes:
+      - .:/code
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - backend
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+
