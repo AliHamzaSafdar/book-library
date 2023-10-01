@@ -1,67 +1,51 @@
-Your Project Name
-Description
-Briefly describe your project, its purpose, and its key features.
+# Book Store Apis<br>
 
-Table of Contents
-Architecture
-Prerequisites
-Getting Started
-Installation
-Configuration
-Usage
-Contributing
-License
-Architecture
-Explain the high-level architecture of your application. Describe how different components interact with each other, including any third-party services or libraries used. You can use diagrams or text to illustrate this.
+# Project Overview:
 
-High-Level Overview
-Provide an overview of the major components, such as the frontend, backend, and any external services.
+The goal of this project was to create a robust RESTful API for an online bookstore using Python, Django, Django REST framework, and Celery. The API encompasses the following features:<br>
 
-Technologies Used
-List the main technologies and frameworks used in your project, such as Django, React, RabbitMQ, etc.
+# 1. User Registration and Authentication:<br>
 
-Prerequisites
-Specify any prerequisites that users need to meet before they can use your application. Include software dependencies, environment variables, or other setup requirements.
+Implemented user registration, login, and logout functionalities.<br>
+Secured API endpoints with Token Authentication to protect user data.<br>
 
-Getting Started
-Provide instructions on how to set up and run your application locally.
+# 2. CRUD Operations:<br>
 
-Installation
-Step-by-step instructions on how to install your application. Include commands and any package managers used (e.g., pip, npm, yarn).
+Books: Created, read, updated, and deleted books with attributes such as title, author, published date, ISBN, and category.<br>
+Authors: Managed CRUD operations for authors.<br>
+Categories: Handled CRUD operations for book categories.<br>
 
-bash
-Copy code
-# Clone the repository
-git clone https://github.com/your/repo.git
+# 3. Shopping Cart:<br>
 
-# Change directory to the project folder
-cd your-project-folder
-Configuration
-Explain how to configure your application. This includes setting up environment variables, creating configuration files, or modifying settings.
+Implemented shopping cart functionalities, including adding books, viewing cart contents, removing books, and purchasing books in the cart.
 
-bash
-Copy code
-# Create a .env file and configure environment variables
-cp .env.example .env
-Usage
-Provide detailed information on how to use your application. Include examples, screenshots, and explanations of the main features.
+# 4. Email Notifications:<br>
 
-Running the Application
-Explain how to run your application. Include commands to start the frontend and backend servers.
+Utilized Celery for background tasks to send email notifications to users after successful purchase of books in their cart.<br>
 
-bash
-Copy code
-# Start the backend server
-python manage.py runserver
+# Implementation Details:<br>
 
-# Start the frontend development server
-npm start
-API Documentation
-If your project has an API, provide documentation on how to use it. You can use tools like Swagger or Postman for API documentation.
+Python and Django were used to build the backend of the application.<br>
+Django REST Framework was employed to create the API, making it easy to design and document the endpoints.<br>
+A PostgreSQL database was chosen to store all the necessary data securely.<br>
+Extensive unit tests were written to ensure the reliability of API endpoints.<br>
+Docker was used for containerization, making it straightforward to set up and run the application in different environments.<br>
+GitHub Actions were configured for Continuous Integration (CI) and Continuous Deployment (CD), allowing for automated testing and deployment.<br>
 
-Contributing
-Explain how others can contribute to your project. Include guidelines for reporting issues, submitting pull requests, and any coding standards.
+# Prerequisites:<br>
+Docker must be installed on your system<br>
 
-License
-Specify the license under which your project is distributed.
+# How to Run<br>
+`git clone https://github.com/AliHamzaSafdar/book-library`<br>
+`cd book-library`<br>
+`docker-compose -f docker-compose-local.yml up --build`<br>
+
+then go to following link to see the endpoints and their documentation
+`http://127.0.0.1:8000/docs/#/`
+You will see the Image 
+![Capture](https://github.com/AliHamzaSafdar/book-library/assets/92223723/541efbde-759a-4369-9474-7bdd59242456)
+
+I have written all the testcases, Additionally postman collections are also in this project to test the apis
+
+
 
