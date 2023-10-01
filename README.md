@@ -1,67 +1,47 @@
-Your Project Name
-Description
-Briefly describe your project, its purpose, and its key features.
+#Book Store Apis
+# Description
+# Project Overview:
 
-Table of Contents
-Architecture
-Prerequisites
-Getting Started
-Installation
-Configuration
-Usage
-Contributing
-License
-Architecture
-Explain the high-level architecture of your application. Describe how different components interact with each other, including any third-party services or libraries used. You can use diagrams or text to illustrate this.
+The goal of this project was to create a robust RESTful API for an online bookstore using Python, Django, Django REST framework, and Celery. The API encompasses the following features:
 
-High-Level Overview
-Provide an overview of the major components, such as the frontend, backend, and any external services.
+# 1. User Registration and Authentication:
 
-Technologies Used
-List the main technologies and frameworks used in your project, such as Django, React, RabbitMQ, etc.
+Implemented user registration, login, and logout functionalities.
+Secured API endpoints with Token Authentication to protect user data.
 
-Prerequisites
-Specify any prerequisites that users need to meet before they can use your application. Include software dependencies, environment variables, or other setup requirements.
+# 2. CRUD Operations:
 
-Getting Started
-Provide instructions on how to set up and run your application locally.
+Books: Created, read, updated, and deleted books with attributes such as title, author, published date, ISBN, and category.
+Authors: Managed CRUD operations for authors.
+Categories: Handled CRUD operations for book categories.
 
-Installation
-Step-by-step instructions on how to install your application. Include commands and any package managers used (e.g., pip, npm, yarn).
+# 3. Shopping Cart:
 
-bash
-Copy code
-# Clone the repository
-git clone https://github.com/your/repo.git
+Implemented shopping cart functionalities, including adding books, viewing cart contents, removing books, and purchasing books in the cart.
 
-# Change directory to the project folder
-cd your-project-folder
-Configuration
-Explain how to configure your application. This includes setting up environment variables, creating configuration files, or modifying settings.
+# 4. Email Notifications:
 
-bash
-Copy code
-# Create a .env file and configure environment variables
-cp .env.example .env
-Usage
-Provide detailed information on how to use your application. Include examples, screenshots, and explanations of the main features.
+Utilized Celery for background tasks to send email notifications to users after successful purchase of books in their cart.
 
-Running the Application
-Explain how to run your application. Include commands to start the frontend and backend servers.
+# Implementation Details:
 
-bash
-Copy code
-# Start the backend server
-python manage.py runserver
+Python and Django were used to build the backend of the application.
+Django REST Framework was employed to create the API, making it easy to design and document the endpoints.
+A PostgreSQL database was chosen to store all the necessary data securely.
+Extensive unit tests were written to ensure the reliability of API endpoints.
+Docker was used for containerization, making it straightforward to set up and run the application in different environments.
+GitHub Actions were configured for Continuous Integration (CI) and Continuous Deployment (CD), allowing for automated testing and deployment.
 
-# Start the frontend development server
-npm start
-API Documentation
-If your project has an API, provide documentation on how to use it. You can use tools like Swagger or Postman for API documentation.
+# Prerequisites:
+Docker must be installed on your system
 
-Contributing
-Explain how others can contribute to your project. Include guidelines for reporting issues, submitting pull requests, and any coding standards.
+# How to Run
+`git clone https://github.com/AliHamzaSafdar/book-library`
+`cd book-library`
+`docker-compose -f docker-compose-local.yml up --build`
 
-License
-Specify the license under which your project is distributed.
+then go to following link to see the endpoints and their documentation
+`http://127.0.0.1:8000/docs/#/`
+
+
 
