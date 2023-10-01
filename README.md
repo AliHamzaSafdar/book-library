@@ -1,5 +1,5 @@
-# Book Store Apis
-# Description
+# Book Store Apis<br>
+
 # Project Overview:
 
 The goal of this project was to create a robust RESTful API for an online bookstore using Python, Django, Django REST framework, and Celery. The API encompasses the following features:<br>
