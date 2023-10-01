@@ -4,12 +4,12 @@ from django.core.mail import send_mail
 
 
 @shared_task(bind=True)
-def send_receipt(self):
+def send_receipt(self, email):
     print("Sending")
     send_mail("Receipt",
-              "Books and Prices",
+              "Receipt for Books and their Prices",
               "hammadhudhy@outlook.com",
-              ["hammadhudhy@gmail.com"],
+              [email],
               fail_silently=False)
     print("Sent")
     return "Done"

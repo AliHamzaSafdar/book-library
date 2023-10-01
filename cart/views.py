@@ -6,6 +6,8 @@ from rest_framework.response import Response
 
 from bookstore.models import Book
 from django.core.mail import send_mail
+
+from user.models import User
 from .models import Cart, CartItem
 from .serializers import CartSerializer
 from .tasks import send_receipt
@@ -86,9 +88,10 @@ def process_payment(request):
     try:
         cart = Cart.objects.get(user=user)
         serializer = CartSerializer(cart)
+        user = User.objects.get(pk=user.id)
 
         # Stripe Payment Logic or any Other Payments
-        result = send_receipt.delay()
+        result = send_receipt.delay(user.email)
 
         return Response({'detail': 'Email Sent Successfully'})
     except Cart.DoesNotExist:
