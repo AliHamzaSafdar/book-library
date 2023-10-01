@@ -1,4 +1,4 @@
-![Capture](https://github.com/AliHamzaSafdar/book-library/assets/92223723/541efbde-759a-4369-9474-7bdd59242456)#Book Store Apis
+# Book Store Apis
 # Description
 # Project Overview:
 
@@ -42,6 +42,8 @@ Docker must be installed on your system<br>
 
 then go to following link to see the endpoints and their documentation
 `http://127.0.0.1:8000/docs/#/`
+You will see the Image 
+![Capture](https://github.com/AliHamzaSafdar/book-library/assets/92223723/541efbde-759a-4369-9474-7bdd59242456)
 
 
 
